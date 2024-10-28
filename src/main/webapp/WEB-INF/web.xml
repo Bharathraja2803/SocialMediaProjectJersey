@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This web.xml file is not required when using Servlet 3.0 container,
+     see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html -->
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.bharath</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <url-pattern>/webapi/*</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+    	<filter-name>AuthenticationFilter</filter-name>
+    	<filter-class>com.bharath.filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>AuthenticationFilter</filter-name>
+    	<url-pattern>/post.jsp</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>ValidateUserDetailsForSignUpFilter</filter-name>
+    	<filter-class>com.bharath.filter.ValidateUserDetailsForSignUpFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>ValidateUserDetailsForSignUpFilter</filter-name>
+    	<url-pattern>/CreateUserServlet</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>ForgetPasswordEmailDobValidationFilter</filter-name>
+    	<filter-class>com.bharath.filter.ForgetPasswordEmailDobValidationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>ForgetPasswordEmailDobValidationFilter</filter-name>
+    	<url-pattern>/change_password.jsp</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>ChangePasswordValidateFilter</filter-name>
+    	<filter-class>com.bharath.filter.ChangePasswordValidateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>ChangePasswordValidateFilter</filter-name>
+    	<url-pattern>/ChangePasswordServlet</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>GetAllPostFilter</filter-name>
+    	<filter-class>com.bharath.filter.GetAllPostFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>GetAllPostFilter</filter-name>
+    	<url-pattern>/post.jsp</url-pattern>
+    </filter-mapping>
+    
+    <servlet>
+    	<servlet-name>CreateUserServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.CreateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>CreateUserServlet</servlet-name>
+    	<url-pattern>/CreateUserServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>ChangePasswordServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>ChangePasswordServlet</servlet-name>
+    	<url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>LikeThePostServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.LikeThePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>LikeThePostServlet</servlet-name>
+    	<url-pattern>/LikeThePostServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>UnlikeThePostServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.UnlikeThePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>UnlikeThePostServlet</servlet-name>
+    	<url-pattern>/UnlikeThePostServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>PostDeleteServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.PostDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>PostDeleteServlet</servlet-name>
+    	<url-pattern>/PostDeleteServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>AddCommentServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.AddCommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>AddCommentServlet</servlet-name>
+    	<url-pattern>/AddCommentServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>PostCreationServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.PostCreationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>PostCreationServlet</servlet-name>
+    	<url-pattern>/PostCreationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>FollowServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.FollowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>FollowServlet</servlet-name>
+    	<url-pattern>/FollowServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>UnfollowServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.UnfollowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>UnfollowServlet</servlet-name>
+    	<url-pattern>/UnfollowServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>ChangeRoleToUserServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.ChangeRoleToUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>ChangeRoleToUserServlet</servlet-name>
+    	<url-pattern>/ChangeRoleToUserServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>ChangeRoleToAdminServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.ChangeRoleToAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>ChangeRoleToAdminServlet</servlet-name>
+    	<url-pattern>/ChangeRoleToAdminServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>RemoveAccountServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.RemoveAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>RemoveAccountServlet</servlet-name>
+    	<url-pattern>/RemoveAccountServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>BlockUserServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.BlockUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>BlockUserServlet</servlet-name>
+    	<url-pattern>/BlockUserServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>UnblockUserServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.UnblockUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>UnblockUserServlet</servlet-name>
+    	<url-pattern>/UnblockUserServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>ChangePasswordAdminServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.ChangePasswordAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>ChangePasswordAdminServlet</servlet-name>
+    	<url-pattern>/ChangePasswordAdminServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>LogoutServlet</servlet-name>
+    	<servlet-class>com.bharath.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>LogoutServlet</servlet-name>
+    	<url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
